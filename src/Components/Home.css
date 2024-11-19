@@ -1,0 +1,22 @@
+ul.justify-content-center.navbar-nav {
+    margin-right: 200px;
+}
+
+li.nav-item {
+    margin-right: 10px;
+}
+
+li.nav-item:hover{
+    text-decoration: underline;
+    color: white;
+}
+
+/* Login */
+/* .modal-body {
+    position: relative;
+    margin-top: 0px;
+} */
+
+.model-content{
+    width : 0%;
+}
