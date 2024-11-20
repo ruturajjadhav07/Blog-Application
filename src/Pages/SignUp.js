@@ -1,13 +1,14 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Home from "./Home.css" 
+import Home from "../Components/Home.css";
+import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
 
-const Login = ({ toggleModal }) => {
+const SignUp = () => {
   return (
     <div
       className="modal fade show"
       id="exampleModal"
-      // tabIndex="-1"
+      tabIndex="-1"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
       style={{
@@ -37,7 +38,6 @@ const Login = ({ toggleModal }) => {
                     <button
                       type="button"
                       className="btn-close"
-                      onClick={toggleModal}
                       aria-label="Close"
                     ></button>
                   </div>
@@ -55,6 +55,18 @@ const Login = ({ toggleModal }) => {
                       />
                     </div>
                     <div className="mb-3">
+                      <label htmlFor="text" className="form-label">
+                        Username
+                      </label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        id="password"
+                        placeholder="Enter your password"
+                        required
+                      />
+                    </div>
+                    <div className="mb-3">
                       <label htmlFor="password" className="form-label">
                         Password
                       </label>
@@ -66,19 +78,21 @@ const Login = ({ toggleModal }) => {
                         required
                       />
                     </div>
-                    <div className="d-flex justify-content-between mb-4">
-                      <a href="#" className="text-muted">
-                        Forgot password?
-                      </a>
+                    <div className="mb-3">
+                      <label htmlFor="password" className="form-label">
+                        Confirm Password
+                      </label>
+                      <input
+                        type="password"
+                        className="form-control"
+                        id="Confirm-password"
+                        placeholder="Confirm Password"
+                        required
+                      />
                     </div>
                     <button type="submit" className="btn btn-primary w-100">
-                      Sign in
+                      Sign Up
                     </button>
-                    <div className="d-flex justify-content-center mt-3">
-                      <p className="mb-0">
-                        Not a member? <a href="#">Register</a>
-                      </p>
-                    </div>
                   </form>
                 </div>
               </div>
@@ -90,4 +104,4 @@ const Login = ({ toggleModal }) => {
   );
 };
 
-export default Login;
+export default SignUp;

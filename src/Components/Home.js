@@ -1,43 +1,8 @@
 import React, { useState } from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import Login from "./Login";
-
+import { Link } from "react-router-dom";
 const Home = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
-
   return (
     <div>
-      <Navbar color="dark" dark expand="md">
-        <NavbarBrand href="/" className="ms-4">
-          Reactstrap
-        </NavbarBrand>
-        <Nav className="justify-content-center" navbar>
-          <NavItem>
-            <NavLink href="#" className="active">
-              Blogs
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="#" className="active">
-              Write
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="#" onClick={toggleModal} className="active">
-              Sign In
-            </NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/SignUp" className="active">
-              Sign Up
-            </NavLink>
-          </NavItem>
-        </Nav>
-      </Navbar>
       <div
         style={{
           backgroundColor: "beige",
@@ -48,24 +13,32 @@ const Home = () => {
         <div
           style={{
             fontFamily:
-              "gt-super, Georgia, Cambria, Times New Roman Times, serif",
+              "gt-super, Georgia, Cambria, Times New Roman, Times, serif",
             marginTop: "90px",
             marginLeft: "40px",
           }}
         >
           <p style={{ fontSize: "80px" }}>Unleash Your Voice 🌟</p>
           <p style={{ fontSize: "70px" }}>Write, Share, and Inspire 📝✨</p>
-          <button
-            type="button"
-            onClick={toggleModal}
-            style={{fontSize: "20px",borderRadius: "4px",color: "beige",backgroundColor: "black",border: "none",padding: "3px 14px",marginTop: "120px",
-            }}
-          >
-            Get Started
-          </button>
+
+          <a href="/login">
+            <button
+              type="button"
+              style={{
+                fontSize: "20px",
+                borderRadius: "4px",
+                color: "beige",
+                backgroundColor: "black",
+                border: "none",
+                padding: "3px 14px",
+                marginTop: "120px",
+              }}
+            >
+              Start Writing
+            </button>
+          </a>
         </div>
       </div>
-      {showModal && <Login toggleModal={toggleModal} />}
     </div>
   );
 };
