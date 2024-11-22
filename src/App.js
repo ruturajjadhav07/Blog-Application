@@ -17,9 +17,9 @@ function App() {
   return (
     <Router>
       <CustomNavbar />
-      <Home />
+      {/* <Home /> */}
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="*" element={<Navigate to="/" />} />

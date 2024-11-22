@@ -8,7 +8,7 @@ const Login = () => {
 
   const [userdata, setUserData] = useState({
     // for user information
-    name: "",
+    email: "",
     password: "",
   });
 
@@ -20,7 +20,7 @@ const Login = () => {
 
   const SubmitForm = (e) => { // submit form and check data in console
     e.preventDefault();
-    console.log(userdata);
+    // console.log(userdata);
 
     //data validation then 
     // call the server
@@ -53,7 +53,7 @@ const Login = () => {
         >
           <div>
             {/* to check it is changing or not value  */}
-            {/* {userdata.name}{userdata.password} */}
+            {/* {userdata.email}{userdata.password} */}
             <div className="d-flex justify-content-center align-items-center">
               <div className="card shadow-lg p-4" style={{ width: "100%" }}>
                 <div className="card-body">
@@ -77,7 +77,7 @@ const Login = () => {
                         className="form-control"
                         id="email"
                         placeholder="Enter your email"
-                        onChange={(e) => Change(e, "name")} //onChange
+                        onChange={(e) => Change(e, "email")} //onChange
                         required
                       />
                     </div>

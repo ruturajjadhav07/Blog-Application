@@ -1,9 +1,52 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "../Components/Home.css";
 import { Modal, ModalHeader, ModalBody, ModalFooter, Button } from "reactstrap";
+import userSignup from "../Server Service/userSignup";
 
 const SignUp = () => {
+  const [userRegister, setUserRegister] = useState({
+    email: "",
+    username: "",
+    password: "",
+    confirmPassword: "",
+  });
+
+  // useEffect(() => {
+  //   console.log(userRegister);
+  // }, [userRegister]);
+
+  const Change = (e, property) => {
+    setUserRegister({ ...userRegister, [property]: e.target.value });
+  };
+
+  const Reset = () => {
+    setUserRegister({
+      email: "",
+      username: "",
+      password: "",
+      confirmPassword: "",
+    });
+  };
+
+  const Submit = (e) => {
+    // submit
+    e.preventDefault();
+    // console.log(userRegister);
+
+    //data validation then
+    // call the server
+
+    // Call Signup
+    userSignup(userRegister)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log("Error")
+      });
+  };
   return (
     <div
       className="modal fade show"
@@ -30,6 +73,7 @@ const SignUp = () => {
           style={{ width: "100%", maxWidth: "400px" }}
         >
           <div>
+            {/* {userRegister.email}  to check*/}
             <div className=" d-flex justify-content-center align-items-center">
               <div className="card shadow-lg p-4" style={{ width: "100%" }}>
                 <div className="card-body">
@@ -51,6 +95,8 @@ const SignUp = () => {
                         className="form-control"
                         id="email"
                         placeholder="Enter your email"
+                        onChange={(e) => Change(e, "email")}
+                        value={userRegister.email}
                         required
                       />
                     </div>
@@ -61,8 +107,10 @@ const SignUp = () => {
                       <input
                         type="text"
                         className="form-control"
-                        id="password"
+                        id="username"
                         placeholder="Enter your password"
+                        onChange={(e) => Change(e, "username")}
+                        value={userRegister.username}
                         required
                       />
                     </div>
@@ -75,6 +123,8 @@ const SignUp = () => {
                         className="form-control"
                         id="password"
                         placeholder="Enter your password"
+                        onChange={(e) => Change(e, "password")}
+                        value={userRegister.password}
                         required
                       />
                     </div>
@@ -87,12 +137,34 @@ const SignUp = () => {
                         className="form-control"
                         id="Confirm-password"
                         placeholder="Confirm Password"
+                        onChange={(e) => Change(e, "confirmPassword")}
+                        value={userRegister.confirmPassword}
                         required
                       />
                     </div>
-                    <button type="submit" className="btn btn-primary w-100">
-                      Sign Up
-                    </button>
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                      }}
+                    >
+                      <button
+                        type="submit"
+                        className="btn btn-primary"
+                        style={{ marginRight: "13px" }}
+                        onClick={Submit}
+                      >
+                        Sign Up
+                      </button>
+                      <button
+                        type="button"
+                        className="btn btn-secondary"
+                        onClick={Reset}
+                      >
+                        Reset
+                      </button>
+                    </div>
                   </form>
                 </div>
               </div>
